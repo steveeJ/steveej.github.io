@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      /*
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Candara);
+      */
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(https://fonts.googleapis.com/css?family=Calibri);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+
+      h1, h2, h3, h4, h5 {
+        margin-bottom: 0;
+      }
+
+      h1:first-of-type {
+        margin-top: 1em;
+      }
+
+      h1 {
+        margin-top: 2em;
+      }
+
+      .remark-slide-content h1 { font-size: 2.1em; }
+      .remark-slide-content h2 { font-size: 1.7em; }
+      .remark-slide-content h3 { font-size: 1.4em; }
+      .remark-slide-content h4 { font-size: 1.1em; }
+      .remark-slide-content h5 { font-size: 1.0em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+
+      li { 
+        line-height: 1.50em;
+        margin-left: 1em;
+      }
+
+      li p { margin-top: 0.80ex; line-height: 0.5; }
+
+      .red { color: #fa0000; }
+      .redbg { background-color: rgba(255,0,0,0.2); }
+      .cyan { color: cyan; }
+      .blue { color: blue; }
+      .violet { color: violet; }
+      .green { color: green; }
+      .yellow { color: orange; }
+      .orange { color: brown; }
+      .yellowbg { background-color: rgba(255,255,0,0.2); }
+
+      .small { font-size: 0.8em; }
+      .big { font-size: 1.1em; }
+      .bigger { font-size: 1.2em; }
+      .large { font-size: 1.5em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+
+      .indent {
+          margin-left: 1em;
+      }
+
+      blockquote {
+        font-family: "Calibri";
+        font-style: italic;
+        font-size: 1.4em;
+        display: block;
+        position: relative;
+        width: 90%;
+        padding-left: 15px;
+        border-left: 5px solid rgba(0, 100, 255, 0.5);
+        border-right: 5px solid rgba(0, 100, 255, 0.5);
+            /*
+        box-shadow: 2px 2px 10px 0px rgba(100, 100, 100, 0.1);
+            */
+      } 
+
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      /*.remark-code-line-highlighted     { background-color: #373832; }*/
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 5px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 24%;
+        height: 92%;
+        float: left;
+      }
+
+      .black {
+        color: #000;
+      }
+
+      .gray {
+        color: #777;
+      }
+
+      .left-column h3, .left-column h4 {
+        color: #000;
+      }
+
+      .right-column {
+        width: 72%;
+        float: right;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: -1%;
+      }
+
+      .middle-column {
+        width: 90%;
+        float: right;
+        padding-top: 0em;
+        padding-bottom: 0em;
+        margin-top: 0em;
+        margin-botom: 0em;
+      }
+
+      img {
+          max-width: 100%;
+          max-height: 100%;
+      }
+
+      /* Header/Footer stuff */
+      div.my-footer {
+          position: absolute;
+          text-align: left;
+          bottom: 12px;
+          left: 20px;
+          width: 100%;
+          opacity: 0.5;
+      }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+layout: true
+name: empty
+---
+layout: true
+<div class="my-footer">Stefan Junker</div>
+---
+class: center, middle
+
+## Master Thesis
+# Guarantees On In-Kernel Memory-Safety Using Rust's Static Code Analysis
+## by Stefan Junker
+
+---
+class: center, top
+
+# Guarantees On Memory-Safety 
+.bigger[Why is it not always guaranteed?]
+
+# In-Kernel 
+.bigger[What is special about the kernel?]
+
+# Using Rust's Static Code Analysis
+.bigger[Why Static? Why Rust? What are the guarantees?]
+
+---
+
+.middle-column[
+### Guarantees On In-Kernel Memory-Safety Using Rust's Static Code Analysis
+### I. Context
+* What's the origin of memory-safety violations?
+* By what means can they be prevented?
+* What are the pitfalls specific to OS development?
+
+### II. Research & Development
+* Which of Rust's language features correspond to memory-safety?
+* Can these features prevent mistakes in low-level driver development?
+
+### III. Evaluation & Conclusion
+* To what degree does the hypothesis hold?
+* What is the general state of OS development with Rust?
+
+.footnote[Please state your questions at the end]
+
+]
+
+<!-- START CONTEXT -->
+---
+name: context::intro
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+### I. Context
+#### 1. Introduction
+##### 2. OS Development Concepts, Conventions, Risks
+##### 3. Weaknesses That Affect Memory-Safety
+##### 4. Weakness Mitigation And Prevention Strategies
+##### 5. OS Development: Choice of Programming Language
+]
+---
+template: context::intro
+.right-column[
+
+#### Hypothesis
+> Rust's static code analysis can guarantee memory safety in the OS
+]
+--
+.right-column[
+#### A Memory-Safety Definition
+> If the OS is memory-safe, any program, whether it is part of the OS or any installed application, is only able to access its allocated memory regions.
+]
+--
+.right-column[
+#### Violation Runtime Consequences
+> Software that has memory-safety violations is vulnerable to random crashes and
+intentional attacks.
+]
+---
+.right-column[
+#### Vulnerabilities in the Software Life-Cycle
+![gfx](gfx/software-life-cycle.png)
+]
+--
+.right-column[
+.big[
+.indent[→ .violet[Compiler] works below the .cyan[programming language]]<br>
+.indent[→ .violet[Compiler] could **and should** perform static analysis]
+]
+
+]
+
+???
+
+### extensive static analysis
+
+---
+name: context::osdev-concepts
+layout:true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+### I. Context
+##### 1. Introduction
+#### 2. OS Development Concepts, Conventions, Risks
+##### 3. Weaknesses That Affect Memory-Safety
+##### 4. Weakness Mitigation And Prevention Strategies
+##### 5. OS Development: Choice of Programming Language
+]
+---
+--
+.right-column[
+#### OS Design and Implementation are Hardware dependent
+* OS requires unrestricted hardware access
+<br>→ .red[high human responsibility]
+]
+--
+.right-column[
+#### OS And Compiler Abstract Hardware Resources
+* CPU Virtualization: OS Switches Tasks transparently
+  * Compiler generates CPU instructions from high-level source code
+* Memory Virtualization: OS provides API for memory allocations
+]
+--
+.right-column[
+#### OS Logic in Hardware
+* Memory-Paging: CPU performs page lookups
+* Stack: manipulation via CPU instructions
+* Preemptive Multitasking: Interrupts cause CPU-internal stack manipulations 
+]
+--
+.right-column[
+#### .red[OS is not in control of the heap]: modelled in userspace
+]
+---
+.right-column[
+#### The Operating System Manages The Hardware
+![gfx](./gfx/system-apis-overview.png)
+]
+
+???
+
+.big[
+* Design Concept: Monolithic Kernel e.g. Linux
+* API Calls: Programming!
+    * Software-Hardware API: Assembler
+    * Userspace/Kernelspace API: system calls
+* OS: Kernelspace
+]
+---
+name: context::weaknesses
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+### I. Context
+##### 1. Introduction
+##### 2. OS Development Concepts, Conventions, Risks
+#### 3. Weaknesses That Affect Memory-Safety
+##### 4. Weakness Mitigation And Prevention Strategies
+##### 5. OS Development: Choice of Programming Language
+]
+---
+.right-column[
+#### Weaknesses in Source Code turn into Software Vulnerabilities
+]
+--
+.right-column[
+#### Life Cycle of a Vulnerability
+1. **Human** writes source code with mistakes
+2. .red[**Compiler** tolerates these mistakes]
+3. **Human** happily distributes the vulnerable software
+4. Software runs fine for a while
+5. Vulnerability is found and .red[**possibly exploited**]
+6. **Human** corrects the source code, **compile**s
+7. Updates are distributed
+8. Software must restarted
+
+.big[.indent[→ Update cycle is time and resource expensive!]]
+]
+--
+
+.right-column[
+#### Vulnerability Runtime Consequences
+* .yellow[Random memory corruption]
+* .yellow[System memory exhaustion]
+* .red[Loss of control flow]
+* .red[Leak of sensitive data]
+]
+
+???
+
+.big[
+* Vulnerability knowledge is critical
+* Who finds the vulnerability **first**
+* Updates should happen fast
+]
+---
+template: context::weaknesses
+
+.right-column[
+#### Database: Common Weakness Enumeration
+> The CWE™ is a community-developed list of common software security weaknesses.
+]
+--
+.right-column[
+#### CWE-119
+> Improper Restriction of Operations within the Bounds of a Memory
+Buffer
+
+.center[*(the inversion of the memory-safety definition)*]
+]
+--
+.right-column[
+<br>
+<br>
+.center[
+#### CWE-119: makes up for 12.92% between 2007-2017 
+*US National Vulnerability Database*
+]
+]
+---
+template: empty
+background-image: url(./gfx/Relative-Vulnerability-Type-Totals-By-Year.png)
+
+???
+
+* buffer error : light blue
+* interesting effect: multi-category weaknesses lead to >100%
+
+![gfx](./gfx/Relative-Vulnerability-Type-Totals-By-Year-Legend.png)
+---
+template: context::weaknesses
+
+.right-column[
+### Example Vulnerabilities on Linux
+
+]
+--
+.right-column[
+#### BlueBorne (CVE-2017-1000251)
+* Remote exploit
+* Vulnerable Bluetooth implementation
+* *Simple* In-Kernel Buffer Overflow
+]
+
+???
+
+Blue Borne Code example at the end?
+--
+.right-column[
+#### Stack Clash (CVE-2017-10003643)
+* Local exploit
+* Stack and other memory regions overlap
+* Userspace exploit via Stack/Heap overlap, e.g. `sudo`, `libc`, etc.
+* Happend also on *BSD* derivates.red[!?]
+* OS design *"flaw"*
+]
+--
+.right-column[
+.center[### .red[High Impact] - Attacker gains full system control]
+]
+---
+.right-column[
+### .center[Stack Clash Explained]
+
+**Guard page** was introduced in Linux a decade ago
+
+OS Action | Safety | Virtual Address Space
+--- | --- | ---
+<br> | | 
+Initial allocation | .green[OK] | ![gfx](./gfx/stack-clash-1.png)
+Terminate process | .green[OK]  | ![gfx](./gfx/stack-clash-2.png)
+Auto allocate | .yellow[VIOLATION] | ![gfx](./gfx/stack-clash-3.png)
+Not involved | .red[CLASH] | ![gfx](./gfx/stack-clash-4.png)
+
+<br>
+]
+--
+.right-column[
+.large[→ References from .blue[Stack] now point to .green[Heap] and vice-versa]
+]
+---
+name: context::weakness-mitigation
+layout:true
+.left-column[
+### I. Context
+##### 1. Introduction
+##### 2. OS Development Concepts, Conventions, Risks
+##### 3. Weaknesses That Affect Memory-Safety
+#### 4. Weakness Mitigation And Prevention Strategies
+##### 5. OS Development: Choice of Programming Language
+]
+---
+.right-column[
+##### CWE-119 Mitigation Attempts Suggestions
+> .blue[**Requirements**].gray[, Architecture and Design, Implementation, and Operation.]
+]
+--
+.right-column[
+##### Requirements Phase 
+> Choose Language That Avoids Weaknesses.
+]
+--
+.right-column[
+##### Main Criteria
+> Languages that perform their own memory management are not subject to buffer overflows.
+]
+--
+.right-column[
+.center[
+<br>
+#### Can Rust perform its own memory management in OS development?
+]
+]
+---
+name: context::osdev-proglang
+layout:true
+.left-column[
+### I. Context
+##### 1. Introduction
+##### 2. OS Development Concepts, Conventions, Risks
+##### 3. Weaknesses That Affect Memory-Safety
+##### 4. Weakness Mitigation And Prevention Strategies
+#### 5. OS Development: Choice of Programming Language
+]
+---
+template: context::osdev-proglang
+.right-column[
+##### OS Development Technical Requirements
+* .blue[Compiler generates bare-metal machine code]
+* .blue[Inline CPU instruction calls]
+* .blue[Direct memory addressing]
+* .green[Optional: High performance]
+]
+--
+.right-column[
+##### C fulfills the requirements, but
+* Is not designed for static analysis
+* Allows dangerous type casts and pointer dereferences
+* Unchecked expansion of macro during pre-processing
+
+.indent[→ High performance comes at cost of low-abstraction]<br>
+.indent[.red[→ Human has great responsibility!]]
+]
+
+???
+* .large[IFNDEF] chaos
+* macros have no proper ordering in the AST
+--
+.right-column[
+##### Rust fulfils the requirements and further promises
+* .yellow[zero-cost abstractions] (via static analysis)
+* .yellow[guaranteed memory safety]
+* .yellow[hygienic macros]
+]
+
+???
+
+.large[**Abstraction**] wraps unsafe mechanisms in safe APIs
+
+<!-- END CONTEXT -->
+---
+name: rnd-rust
+layout:true
+.left-column[
+### I. Research & Development
+#### 1. Rust
+##### 2. Weakneess Mitigation and Prevention
+##### 3. Existing OS Development Projects in Rust
+##### 4. intermezzOS: Adding Preemptive OS-Level Multitasking
+]
+---
+.right-column[
+## Rust
+> Statically typed programming language that uses a new concept of variable
+ownership and reference tracking.
+
+## Ecosystem
+#### Open Source Project Initiated by Mozilla
+* Complete documentation
+* Active Community
+
+#### Language Development
+* RFC processes for new feature suggestions
+* Stable/Beta/Nightly for feature integration
+
+.green[
+#### Safety First
+]
+]
+---
+.right-column[.center[
+<!---  
+![gfx](./gfx/rust-compiler-flow.png)
+--->
+.center[**Rust Compiler Architecture**]
+
+Old | New | Comments
+--- | --- | 
+.blue[Rust Source] | .blue[Rust Source] 
+↓ | ↓ 
+*Syntax Parsing* | *Syntax Parsing* | parses token trees
+↓ | ↓ 
+.blue[HIR] | .blue[HIR] | AST equivalent - Macros are first-class members
+↓ | ↓ 
+*Type checking*  | *Type checking* | **Macros are checked too**
+↓ | ↓ 
+↓ | .green[MIR] | Designed for efficient static analysis
+↓ | ↓ 
+*Borrow checking* | .green[*Borrow checking*] | .green[fine-grained checks]
+*Translation* | .green[*Optimization*] | .green[Rust-type aware]
+↓ | ↓
+.blue[LLVM IR] | .blue[LLVM IR]
+↓ | ↓ 
+*Optimization* | *Optimization* | Rust-type unaware
+↓ | ↓ 
+.blue[Machine Code] | .blue[Machine Code]
+]
+]
+
+???
+
+* HIR - High Intermediate Repr.
+* MIR - Middle Intermediate Repr.
+* LLVM - Low-Level Virtual Machine with hardware independent instruction set
+
+---
+.right-column[
+### Ownership Example: Vector Pattern Matching
+Given a `vec` with two elements
+```rust
+let mut vec = [1, 2];
+```
+]
+--
+.right-column[
+Borrow single vector elements in a `match` pattern:
+
+```rust
+match vec {
+    [ref mut p, ref mut q] => { /* do somethng with p and q */ }
+    _ => { /* do something else */ }
+}
+```
+]
+--
+.right-column[
+Doesn't work in other expressions:
+
+```rust
+let p = &mut vec[0], q = &mut vec[1];
+/* do somethng with p and q */
+```
+<br>
+Not yet implemented but .green[possible to be implemented in the **MIR**]
+]
+---
+.right-column[
+## Language Extensions
+
+### Compiler Plugins - Example From Research Paper
+
+#### Information Flow Control (by Balasubramanian et. al.)
+
+Enforces security contexts can be declared for data separation!
+
+```rust
+let mut buf = Buffer::new();
+#`[ label(non-secret )]` // security annotation for IFC 
+let nonsec = vec![1,2,3]; 
+
+#`[ label(secret )]` // security annotation for IFC 
+let sec = vec![4,5,6];
+*buf.append(nonsec);
+*buf.append(sec); // buf now contains secret data 
+println!("{:?}" , buf.data ); // `ERROR : leaks secret data`
+```
+]
+---
+name: rnd-stack-weakness-prevention-mitigation
+layout: true
+.left-column[
+### I. Research & Development
+##### 1. Rust
+#### 2. Weakneess Mitigation and Prevention
+##### 3. Existing OS Development Projects in Rust
+##### 4. intermezzOS: Adding Preemptive OS-Level Multitasking
+]
+--
+.right-column[
+### Macros are a language extension themselve
+]
+---
+.right-column[
+## Stack Clash Analysis In Rust On Linux
+```rust
+fn huge_stack() {
+    const slice_length: usize = 0x100_000_000;
+    let slice: [u64; slice_length] = [0xdeadbeef; slice_length];
+}
+```
+* .red[Compiles Fine: Huge Stack allocations are not detected statically]
+* .yellow[Runtime checks detect Stack Overflow]
+]
+--
+.right-column[
+#### Mitigation
+.red[Automatic Stack probing in the function-prologue will touch the guard page]
+
+```nasm
+huge_stack:
+    movabs rax,`0x800000078`
+*   call   3e120 <__rust_probestack>
+    sub    rsp,rax
+```
+]
+--
+.right-column[
+#### Stack Size Estimation
+
+.green[The assembly reveals that the stack size is statically known!]
+]
+---
+name: rnd--existing-os-proj
+layout:true
+.left-column[
+### I. Research & Development
+##### 1. Rust
+##### 2. Weakneess Mitigation and Prevention
+#### 3. Existing OS Development Projects in Rust
+##### 4. intermezzOS: Adding Preemptive OS-Level Multitasking
+]
+---
+template: rnd--existing-os-proj
+exclude: false
+count: true
+.right-column[
+## Redox OS
+
+### Semi-Professional OS written in Rust
+
+### .green[Not vulnerable to the Stack Clash]
+
+Due to design decision: no automatic Stack allocation in the Page-Fault-Interrupt-Handler:
+
+```rust
+interrupt_error!(page, stack, {
+    let cr2: usize;
+    asm!("mov rax, cr2" : "={rax}"(cr2) : : : "intel", "volatile");
+    println!(
+        "Page fault: {:>02X}:{:>016X} at {:>02X}:{:>016X}",
+        stack.code, cr2, stack.cs, stack.rip);
+    stack_trace();
+    ksignal(SIGSEGV);
+});
+```
+
+Unconditional `SIGSEV` to the process that caused the page-fault.
+]
+---
+name: rnd-intermezzos-dev
+layout:true
+.left-column[
+### I. Research & Development
+##### 1. Rust
+##### 2. Weakneess Mitigation and Prevention
+##### 3. Existing OS Development Projects in Rust
+#### 4. intermezzOS: Adding Preemptive OS-Level Multitasking
+]
+---
+template: rnd-intermezzos-dev
+exclude: false
+count: true
+.right-column[
+## Macro For Defining Interrupt Handlers
+```rust
+let timer = make_idt_entry!(isr32, esf: `&mut ExceptionStackFrame`, true,{
+    unsafe { CLOCK.tick() };
+});
+```
+]
+--
+.right-column[
+```rust
+macro_rules! make_idt_entry {
+*  ($name:ident, $esf:ident: `$esfty:ty`, $ir_gate:expr, $body:expr) => {{
+        ... 
+        extern "x86-interrupt" fn $name($esf: $esfty) {
+            /* pre-defined code */
+            $body
+        };
+        ...
+        let handler = VAddr::from_usize($name as usize);
+        IdtEntry::new(handler, 0x8, PrivilegeLevel::Ring0, $ir_gate)
+    }};
+}
+```
+]
+--
+.right-column[
+* Hidden feature: `"x86-interrupt"` function type
+* .green[Handles Register Save/Restore]
+]
+
+???
+
+* This feature was contributed by a hobby OS programmer!
+---
+.right-column[
+### Stack Overflow In-Kernel Runtime-Detection
+Snippet from the developed task handling:
+
+```rust
+fn manage_tasks(esf: &mut ExceptionStackFrame, registers: &mut
+tasks::TaskRegisters) {
+...
+    if let Some(mut tsi) = TSI.try_lock() {
+    ...
+*       `if !`tsi.get_current_task().`stack.contains(esf.stack_pointer)` {
+        kprintln_try!(CONTEXT, "Stack overflow in task {}!\nStack:
+            {:x}\nESF: {:x}\nREGS: {:x}", tsi.current_task,
+            tsi.get_current_task().stack,
+            esf,
+            registers);
+*       tsi.get_current_task_mut().`blocked = true`;
+        }
+    }
+    ...
+}
+```
+.center[##### Stack overflow causes tasked blockage]
+]
+
+<!-- END RESEARCH AND DEVELOPMENT-->
+---
+name: eac-eval
+layout:true
+.left-column[
+### III. Evaluation & Conclusion
+#### 1. Evaluation
+##### 2. Conclusion
+]
+---
+.right-column[
+### Hypothesis Rejected
+
+#### In-Kernel memory-safety is not guaranteed through Rust's static analysis
+.red[
+* Static stack overflow detection is missing
+* **`unsafe`** code is necessary
+]
+]
+
+???
+* .large[This is expected, otherwise Rust would implement AN OS]
+
+--
+.right-column[
+### Rust Improves In-Kernel Memory-Safety compared to C
+.green[
+* Fulfills technical requirements for OS development
+* Type System allows detailed modelling of underlying hardware
+* Dangerous methods can be declared **`unsafe`** and force the programmer to think twice
+]
+]
+---
+name: eac-conclusion
+layout:true
+.left-column[
+### III. Evaluation & Conclusion
+##### 1. Evaluation
+#### 2. Conclusion
+]
+---
+.right-column[
+.red[
+## Vulnerability Detection at Runtime is too late
+#### Humans must be stopped from making mistakes by the compiler
+]
+.green[
+## Rust has great potential in OS Development
+#### It fulfills the technical requirements
+#### It enforces certain static checks
+#### It is extendable with more static checks
+]
+
+.yellow[
+## Rust can still be improved
+#### It lacks static Stack protection
+]
+]
+---
+layout:false
+class: middle, center
+
+# Thank you! 
+# Time for Questions
+
+---
+template: rnd-stack-weakness-prevention-mitigation
+exclude: false
+count: false
+.right-column[
+#### Example: BlueBorne
+
+```c
+...
+char \`buf\`[64];
+len = l2cap_parse_conf_rsp(chan, rsp->data, len, \`buf\`, & result);
+...
+```
+Buffer size information is **always passed in Rust**:
+
+```rust
+fn fill_buf(buf: &mut [u8]) {
+    for i in 1..65 {
+        buf[i] = i as u8;
+    }
+}
+
+fn main() {
+    let mut buf: [u8; 64] = [0; 64];
+    fill_buf(&mut buf);
+}
+
+Output:
+thread 'main' panicked at 'index out of bounds:
+the len is 64 but the index is 64', src/main.rs:3:9
+```
+]
+---
+template: rnd-stack-weakness-prevention-mitigation
+exclude: false
+count: false
+.right-column[
+#### The Ownership Model Eliminates Common Weaknesses
+Beingeissner et. al. found the following weakness types eliminated:
+* use-after-free
+* **indexing out of bounds**
+* iterator invalidation
+* data races
+]
+---
+template: rnd-stack-weakness-prevention-mitigation
+exclude: false
+count: false
+.right-column[
+## Stack Overflow When Using The Heap
+* Compiler allocates on the stack and then moves to heap
+
+```rust
+fn crashes() -> Box<[f32; 655360]> {
+  return Box::new([0f32; 655360]);
+}
+fn main() {
+  crashes();
+}
+```
+]
+---
+template: rnd-intermezzos-dev
+exclude: false
+count: false
+.right-column[
+#### Interrupt Handler For Task Switching - Unsafe Stack Frame Calculations
+```rust
+let timer = make_idt_entry!(isr32, esf: &mut ExceptionStackFrame, true, {
+    let rbp_on_stack: *mut usize = unsafe { 
+        (get_register!("rbp") as *mut usize)
+    };
+
+    let rax_offset = 1 - 
+        (mem::size_of::<tasks::TaskRegisters>() as isize / 8);
+
+
+    let rax_on_stack: *mut usize = unsafe { 
+        rbp_on_stack.offset(rax_offset)
+    };
+
+    let registers_on_stack: &mut tasks::TaskRegisters = unsafe { 
+        mem::transmute::<*mut usize,`
+                         `&mut tasks::TaskRegisters>(rax_on_stack)
+    };
+    ...
+
+    manage_tasks(esf, registers_on_stack);
+    pic::eoi_for(32);
+};
+```
+]
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create({
+          <!-- sourceUrl: 'slides.md', -->
+        ratio:'16:10',
+        slideNumberFormat: '%current%/%total%',
+        highlightLanguage: "rust",
+        highlightStyle: "monokai",
+        highlightLines: true,
+        highlightSpans: true,
+      });
+    </script>
+  </body>
+</html>
