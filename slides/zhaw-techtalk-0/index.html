@@ -502,7 +502,7 @@ Keywords included:
 
 * .green[The quantitative amount of work related to API description, code generation, and consumption is increasing]
 * .blue[The specific problem of code generator support for extensible descriptors was not discussed in any of the search results]
-* The most interesting find is *"On the Security Expressiveness of REST-Based API Definition Languages"*, H.V. Nguyen et al. Distributed, which analysis how security aspects of APIs can be expressed in various IDls
+* The most interesting find is *"On the Security Expressiveness of REST-Based API Definition Languages"*, H.V. Nguyen et al., which analysis how security aspects of APIs can be expressed in various IDls
 ]
 ---
 template: literate_and_technology::evolution
@@ -764,7 +764,7 @@ layout: true
 ---
 template: example-impl::architecture
 .right-column[
-### Secure Echo Server - Specification
+### Secure Echo Service - Specification
 ```yml
 swagger: '2.0'
 (...)
@@ -778,7 +778,7 @@ swagger: '2.0'
       operationId: postEcho
       responses:
         '201':
-          description: POST echo'd
+          description: POST echo
           schema:
             $ref: '#/definitions/Message'
         '401':
@@ -796,7 +796,7 @@ swagger: '2.0'
 ---
 template: example-impl::architecture
 .right-column[
-### Secure Echo Server - Specification
+### Secure Echo Service - Specification
 ```yml
 securityDefinitions:
   apiKey:
@@ -965,6 +965,7 @@ latest: digest: sha256:fa56f4a2f69d10f0a7f153d1d362e0f0f4031936e0253b02cdf2cdc40
 DONE
 ----------------------------------------------------------------------------------------------
 Updating service [default]...failed.
+ERROR: (gcloud.app.deploy) Error Response: [13] An internal error occurred during deployment.
 ```
 ]
 ---
@@ -1002,15 +1003,17 @@ template: example-impl::conclusion::summary
 #### State of OpenAPI
 ##### Politics and Community
 * .green[Independently governed and protected by the Linux Foundation]
-* .green[Numerous industry companies are]
-
+* .green[Numerous industry companies are on board]
+]
+--
+.right-column[
 #### .yellow[Results Depend on Tooling and Specific Target Language Support]
 * The most complex part is translating the specification document to source code.
 
-Involved problems and their states
-* .green[Parsing the Specification Attributes]
-* .yellow[Mapping spec attributes to templating variables]
-* .red[Developing smart templates for accurately mapping specification features]
+  Involved problems and their states
+  * .green[Parsing the Specification Attributes]
+  * .yellow[Mapping spec attributes to templating variables]
+  * .red[Developing smart templates for accurately mapping specification features]
 ]
 ---
 name: example-impl::conclusion::outlook
@@ -1033,9 +1036,14 @@ template: example-impl::conclusion::outlook
     * Error handling
     * Client-Side Load Balancing based on Servers in Specification Document
     * Callback handling
-
+]
+--
+.right-column[
 #### OpenAPI Specific - Medium-Term Goals
 * Provider independent API gateway support for Combined Specification
+]
+--
+.right-column[
 
 #### Generic Web-Services - Long-Term Goals
 * Form a connection between RPC protocol IDLs and REST IDLs

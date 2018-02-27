@@ -12,7 +12,7 @@ paths:
       operationId: postEcho
       responses:
         '201':
-          description: POST echo'd
+          description: POST echo
           schema:
             $ref: '#/definitions/Message'
         '401':

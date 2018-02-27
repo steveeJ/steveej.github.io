@@ -16,7 +16,7 @@ paths:
               $ref: "#/components/schemas/Message"
       responses:
         '201':
-          description: POST echo'd
+          description: POST echo
           content:
             application/json:
               schema:
