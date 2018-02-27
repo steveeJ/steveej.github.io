@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Stefan Junker - Tech Talk 0 @ ZHAW </title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <meta charset="utf-8">
+  <style>
+    @font-face {
+      font-family: 'Droid Serif';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Droid Serif Regular'), local('DroidSerif-Regular'), url(https://fonts.gstatic.com/s/droidserif/v8/tDbI2oqRg1oM3QBjjcaDkOr9rAA.ttf) format('truetype');
+    }
+
+
+    /* latin */
+
+    @font-face {
+      font-family: 'Calibri';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Calibri'), url(https://fonts.gstatic.com/l/font?kit=J7afnpV-BGlaFfdAhLEY6w&skey=a1029226f80653a8&v=v8) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /*
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      */
+
+    body {
+      font-family: 'Droid Serif';
+    }
+
+    body a {
+      text-decoration: underline;
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      margin-bottom: 0;
+    }
+
+    .wide table {
+      margin-top: 15px;
+      min-width: 99%;
+    }
+
+    table td,
+    th {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 5px;
+    }
+
+    table td:not(:last-of-type) {
+      padding-right: 1ex;
+    }
+
+    .internalborders td:not(:last-of-type),
+    .internalborders th:not(:last-of-type) {
+      border-right: 1px solid;
+      padding-right: 1ex;
+    }
+
+    .nohead thead {
+      display: none
+    }
+
+    h1:first-of-type {
+      margin-top: 1em;
+    }
+
+    h1 {
+      margin-top: 2em;
+    }
+
+    .remark-slide-content h1 {
+      font-size: 2.1em;
+    }
+
+    .remark-slide-content h2 {
+      font-size: 1.7em;
+    }
+
+    .remark-slide-content h3 {
+      font-size: 1.4em;
+    }
+
+    .remark-slide-content h4 {
+      font-size: 1.1em;
+    }
+
+    .remark-slide-content h5 {
+      font-size: 1.0em;
+    }
+
+    .footnote {
+      position: absolute;
+      bottom: 3em;
+    }
+
+    li {
+      line-height: 1.50em;
+      margin-left: 1em;
+    }
+
+    .red {
+      color: #fa0000;
+    }
+
+    .redbg {
+      background-color: rgba(255, 0, 0, 0.2);
+    }
+
+    .cyan {
+      color: cyan;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .violet {
+      color: violet;
+    }
+
+    .green {
+      color: green;
+    }
+
+    .yellow {
+      color: orange;
+    }
+
+    .orange {
+      color: brown;
+    }
+
+    .gray {
+      color: gray;
+    }
+
+    .yellowbg {
+      background-color: rgba(255, 255, 0, 0.2);
+    }
+
+    .notsmall {
+      font-size: 0.9em;
+    }
+
+    .small {
+      font-size: 0.8em;
+    }
+
+    .smaller-font {
+      font-size: 14px
+    }
+
+
+    .big {
+      font-size: 1.1em;
+    }
+
+    .bigger {
+      font-size: 1.2em;
+    }
+
+    .large {
+      font-size: 1.5em;
+    }
+
+    a,
+    a>code {
+      color: rgb(249, 38, 114);
+      text-decoration: none;
+    }
+
+    .indent {
+      margin-left: 1em;
+    }
+
+    blockquote {
+      font-family: "Calibri";
+      font-style: italic;
+      font-size: 1.2em;
+      display: block;
+      position: relative;
+      width: 100%;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-left: 5px solid rgba(0, 100, 255, 0.5);
+      border-right: 5px solid rgba(0, 100, 255, 0.5);
+      /*
+        box-shadow: 2px 2px 10px 0px rgba(100, 100, 100, 0.1);
+            */
+    }
+
+
+
+    code {
+      background: #e7e8e2;
+      border-radius: 5px;
+    }
+
+    .remark-code,
+    .remark-inline-code {
+      font-family: 'Ubuntu Mono';
+    }
+
+    .remark-code-line-highlighted {
+      background-color: #373832;
+    }
+
+    /*.remark-code-line-highlighted     { background-color: #373832; }*/
+
+    .pull-left {
+      float: left;
+      width: 47%;
+    }
+
+    .pull-right {
+      float: right;
+      width: 47%;
+    }
+
+    .pull-right~p {
+      clear: both;
+    }
+
+    #slideshow .slide .content code {
+      font-size: 0.8em;
+    }
+
+    #slideshow .slide .content pre code {
+      font-size: 0.9em;
+      padding: 15px;
+    }
+
+    .inverse {
+      background: #272822;
+      color: #777872;
+      text-shadow: 0 0 5px #333;
+    }
+
+    .inverse h1,
+    .inverse h2 {
+      color: #f3f3f3;
+      line-height: 0.8em;
+    }
+
+    /* Slide-specific styling */
+
+    #slide-inverse .footnote {
+      bottom: 12px;
+      left: 20px;
+    }
+
+    #slide-how .slides {
+      font-size: 0.9em;
+      position: absolute;
+      top: 151px;
+      right: 140px;
+    }
+
+    #slide-how .slides h3 {
+      margin-top: 0.2em;
+    }
+
+    #slide-how .slides .first,
+    #slide-how .slides .second {
+      padding: 1px 20px;
+      height: 90px;
+      width: 120px;
+      -moz-box-shadow: 0 0 10px #777;
+      -webkit-box-shadow: 0 0 10px #777;
+      box-shadow: 0 0 10px #777;
+    }
+
+    #slide-how .slides .first {
+      background: #fff;
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      z-index: 1;
+    }
+
+    #slide-how .slides .second {
+      position: relative;
+      background: #fff;
+      z-index: 0;
+    }
+
+    /* Two-column layout */
+
+    .left-column {
+      color: #777;
+      width: 24%;
+      height: 92%;
+      float: left;
+    }
+
+    .black {
+      color: #000;
+    }
+
+    .gray {
+      color: #777;
+    }
+
+    .left-column h2,
+    .left-column h4 {
+      color: #000;
+    }
+
+    .left-column h3,
+    .left-column h5 {
+      color: gray
+    }
+
+    .left-column h2 {
+      font-size: 1.3em;
+    }
+
+    .left-column h3 {
+      font-size: 1.2em;
+    }
+
+    .left-column h4 {
+      font-size: 1.2em;
+    }
+
+    .left-column h4 {
+      font-size: 1.1em;
+    }
+
+    .right-column {
+      width: 72%;
+      float: right;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: -1%;
+      /* color: gray; */
+    }
+
+    .middle-column {
+      width: 90%;
+      float: right;
+      padding-top: 0em;
+      padding-bottom: 0em;
+      margin-top: 0em;
+      margin-bottom: 0em;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    /* Header/Footer stuff */
+
+    div.my-footer {
+      position: absolute;
+      text-align: left;
+      bottom: 12px;
+      left: 20px;
+      width: 100%;
+      opacity: 0.5;
+    }
+
+    .footnote {
+      position: absolute;
+      bottom: 3em;
+    }
+  </style>
+</head>
+
+<body>
+  <textarea id="source">
+layout: true
+name: empty
+---
+layout: true
+<div class="my-footer">Tech Talk @ ZHAW - Stefan Junker</div>
+---
+class: center, middle
+
+## Tech Talk @ ZHAW
+# Code generation from extensible API descriptions
+### Stefan Junker
+
+### Slides - https://steveej.github.io/slides/zhaw-techtalk-0
+
+---
+
+.middle-column[
+.footnote[Please state your questions at the end]
+
+## Code generation from extensible API descriptions
+
+### I. Literature & Technology Analysis
+* Interface Definition Language → Evolution → Evaluation
+<!-- systematic literature analysis on related topics of how API descriptions evolved and are used through tooling -->
+
+### II. Example Implementation
+* Design & Architecture → Notes → Demo
+
+### III. Conclusion
+* Evaluation → Summary → Outlook
+
+]
+
+<!-- START LITERATURE -->
+---
+name: literate_and_technology::idl
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+## I. Literature & Technology
+#### 1. Interface Description Language
+##### 2. Evolution
+##### 3. Evaluation
+### II. Example Implementation
+### III. Conclusion
+]
+---
+template: literate_and_technology::idl
+.right-column[
+### Interface Description Language: Sharing intermediate representations
+Author: David Alex Lamb, 1985, Queen’s University
+
+#### Motivation
+> Improving programmer productivity
+
+#### Method
+> Integration of tools
+]
+--
+.right-column[
+#### Use-Case
+Systems that run large programs, which..
+> * communicate via complex data structures.
+> * might be written in different programming languages and might run on different hardware.
+> * have internal data representations which must be tailored
+]
+---
+template: literate_and_technology::idl
+.right-column[
+#### Components
+
+> A **tool** for controlling the exchange of structured data between different components of a large system.
+
+> A **notation** for describing collections of programs and the data structures through which they communicate.
+
+> A **designer** gives abstract descriptions of data structures, together with representation specifications that specialize the abstract structures for particular programs.
+
+> A **translator** that generates readers and writers that map between concrete internal representations and abstract exchange representations.
+]
+--
+.right-column[
+#### Scope of IDL
+* .green[Representation and conversion of data]
+* .red[Session/Connection handling is out-of-scope]
+]
+
+???
+
+### Network in 1988 were not as dangerous and like today
+
+### Skip syntax cause it's confusing
+
+---
+template: literate_and_technology::idl
+.right-column[
+### Minimized amount of code written by the user
+> ![idl-user-process](gfx/idl-user-process-generation.png)
+]
+
+???
+
+### Only two components written by the user
+---
+name: literate_and_technology::evolution
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+## I. Literature & Technology
+##### 1. Interface Description Language
+#### 2. Evolution
+##### 3. Evaluation
+### II. Example Implementation
+### III. Conclusion
+]
+---
+template: literate_and_technology::evolution
+.right-column[
+
+### Relevant Literature Search
+
+Keywords included:
+* interface description language
+* API code generation
+* API client stub
+* API sdk generation
+
+.nohead.wide[
+- | -
+- | -
+**Year** | 2011 | 2012 | 2013 | 2014 | 2016 | 2016 | 2017
+**Relevant results** | 1 | 0 | 4 | 1 | 4 | 5 | 8
+]
+
+]
+--
+.right-column[
+
+* .green[The quantitative amount of work related to API description, code generation, and consumption is increasing]
+* .blue[The specific problem of code generator support for extensible descriptors was not discussed in any of the search results]
+* The most interesting find is *"On the Security Expressiveness of REST-Based API Definition Languages"*, H.V. Nguyen et al. Distributed, which analysis how security aspects of APIs can be expressed in various IDls
+]
+---
+template: literate_and_technology::evolution
+.right-column[
+
+### Relevant Industry Search
+* Since this is a rather technical issue, main activity seems to stem from the industry
+* Big and small organizations, as well as individuals are involved in this problem space
+* Many commercial tools for writing and managing API descriptions
+* Open Source activity, including Linux Foundation and Cloud Native Computing Foundation
+
+]
+--
+.right-column[
+### Chosen Descriptor of Interest
+Security scheme declaration
+* Basic, Key-Based, OAuth, etc.
+* Fine-grained support desired, e.g. authenticate on level of endpoints, resources, and operations
+
+]
+---
+template: literate_and_technology::evolution
+.right-column[
+.footnote.small[*(Table data based on Wikipedia and respective product release channels)*]
+
+.wide.internalborders[
+Technology | Features | Author(s) | Year
+:-: | :-: | :-: | :-:
+IDL | Method and Structure Description Language, Tooling | Lamb et al. | 1985
+CORBA | Description Language, RPC Protocol, Discovery, Authentication | Object Management Group Inc. | 1991
+HTTP/1 | Generic Request/Response Network Protocol | T. Berners-Lee, CERN | 1991
+HTML | Markup-Language for interactive data represenation | T. Berners-Lee, CERN | 1991
+XML | Extensible Markup Language | Textuality and Netscape, Microsoft, Sun Microsystems | 1996
+XML Schema | Schema language for describing XML documents | Microsoft, DataChannel | 1998
+]
+
+]
+???
+
+* World Wide Web Consortium (W3C)
+* HTTP / CORBA must have been developed side-by-side
+  * CORBA was solely RPC based
+
+---
+template: literate_and_technology::evolution
+.right-column[
+.footnote.small[*(Table data based on Wikipedia and respective product release channels)*]
+
+.wide.internalborders[
+Technology | Features | Author(s) | Year
+:-: | :-: | :-: | :-:
+XML-RPC | HTTP-based RPC Protocol with XML as transport representation, XML Schema Language (XML) | UserLand Software, Microsoft | 1998
+JSON | Human-readable text-based data representation format | Douglas Crockford | 2000
+SOAP | Messaging Protocol using XML and XML SChema | W3C | 2000
+WSDL 1 | Web Services Description Language for SOAP based web services | W3C / IBM, Microsoft, Ariba | 2000
+REST | Architectural constraints for HTTP web services | Roy Fielding | 2000
+Protocol Buffers 1 | Method and Structure Description Language, Data conversion, Tooling | Google | 2001
+JSON-RPC 1 | HTTP-based RPC Protocol with JSON as transport representation | Atif Aziz, Jan-Klaas Kollhof | 2005
+]
+
+]
+
+???
+
+* SOAP: Simple Object Access Protocol
+* JSON: JavaScript Object notation
+* WSDL: Web Services Description Language
+
+---
+template: literate_and_technology::evolution
+.right-column[
+.footnote.small[*(Table data based on Wikipedia and respective product release channels)*]
+
+.wide.internalborders[
+Technology | Features | Author(s) | Year
+:-: | :-: | :-: | :-:
+WSDL 2 | WSDL1 Simplified and support for RESTful services | W3C | 2007
+Thrift | Method and Structure Description Language, tooling for simple data conversion, RPC protocol | Facebook | 2007
+Protocol Buffers 2 | Method and Structure Description Language, Data conversion, Tooling | Google | 2008
+WADL | Web Application Description Language for RESTful web services | Sun Microsystems | 2009
+OpenAPI 1 (Swagger) | RESTful Method and Structure Description Language, Tooling | Reverb Technologies | 2011
+]
+
+]
+---
+template: literate_and_technology::evolution
+.right-column[
+.footnote.small[*(Table data based on Wikipedia and respective product release channels)*]
+
+.wide.internalborders[
+Technology | Features | Author(s) | Year
+:-: | :-: | :-: | :-:
+RAML | RESTful Method and Structure Description Language, Tooling | MuleSoft, RAML Workgroup | 2013
+Cap' N Proto | Method and Structure Description Language, 0-Copy data conversion, Tooling, RPC Protocol | K. Varda (ProtoBuf 2 Author) | 2013
+OpenAPI 2 (Swagger) | Added features, especially **Extension Attributes**, Tooling | Reverb Technologies then bought by SmartBear | 2014
+HTTP/2 | Improved network efficiency over HTTP/1 | IETF HTTPBis Working Group | 2015
+gRPC | RPC protocol for HTTP/2, uses ProtoBuf by default | CNCF (donated by Google) | 2015
+]
+]
+---
+template: literate_and_technology::evolution
+.right-column[
+.footnote.small[*(Table data based on Wikipedia and respective product release channels)*]
+
+.wide.internalborders[
+Technology | Features | Author(s) | Year
+:-: | :-: | :-: | :-:
+Protocol Buffers 3 | Method and Structure Description Language, Data conversion, Tooling | Google | 2016
+GraphQL | Web Data Query Language Specification, Tooling | Facebook | 2016
+OpenAPI 3 | More features, Callbacks, References, etc. | Linux Foundation / OpenAPI Initiative: SmartBear (donators), MuleSoft, Google, Microsoft, etc. | 2018
+]
+
+]
+---
+name: literate_and_technology::evaluation
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+## I. Literature & Technology
+##### 1. Interface Description Language
+##### 2. Evolution
+#### 3. Evaluation
+### II. Example Implementation
+### III. Conclusion
+]
+---
+template: literate_and_technology::evaluation
+.right-column[
+### Choosing the Description Language
+]
+--
+.right-column[
+#### Requirements and Preferences
+
+.wide[
+Feature | Priority
+:- | :-
+Supports descriptor extension with metadata | Required
+Existing code generator support for Golang Client | Required
+Existing code generator support for Golang Server | Desired .small[(might be handled by a Proxy)]
+Open Source Tooling | Desired
+Native support by at least one public cloud provider (API gateway) | Desired
+]
+
+]
+--
+.right-column[
+##### Scope Limiting Decisions
+* Golang due to personal familiarity and expectation of wide support for Web-Services
+* Focus on RESTful web service descriptions; RPC functionality evaluation is out of scope
+]
+
+???
+
+### Server Side can be handled via Proxy
+---
+layout: false
+.center[**Feature Overview**]
+.wide.internalborders[
+Candidate | Extensible Metadata Descriptors | Golang Client Generator | Golang Server Generator | Cloud Provider Support | Comment
+:-: | :-: | :-: | :-: | :-:
+gRPC / Protobuf 3 | .yellow[insufficient - only custom/`Any` types] | .green[Official] /  | .green[Official] | .green[Google Cloud] | .yellow[[Requires annotations for REST compatibility](https://github.com/googleapis/googleapis/blob/e9f101a23ca58f0d42f5fef52ddbc1ef55257506/google/api/http.proto#L82-L87)]
+[OpenAPI 2](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) | .green[[Attributes prefixed by `x-`](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#specification-extensions) ] | .green[Official FOSS (swagger-codegen)] / .yellow[Other Freemium/Commercial]| same as client | .green[Google Cloud, AWS, IBM] | [Native support for authentication schemes]()
+[OpenAPI 3](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md) | .green[[Attributes prefixed by `x-`](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#specification-extensions) ] | .red[[Official FOSS  WIP](https://github.com/swagger-api/swagger-codegen/issues/6598)] / .yellow[[FOSS 3rd party impl.](https://github.com/Mermade/openapi-codegen)] | same as client | .red[not found] | [Native support for authentication schemes](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#securitySchemeObject)
+[RAML](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md) | .green[[Annotations](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md/#annotations)] | .red[only through conversion to OpenAPI]  | *same as client* | *same as client* | [Native support for authentication schemes](https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md/#security-schemes)
+WSDL 2 | .green[[Countless WS-Standards](https://www.innoq.com/soa/ws-standards/poster/innoQ%20WS-Standards%20Poster%202007-02.pdf)] | .red[only WSDL 1.1] | .red[only WSDL 1.1] | .red[not found] |
+]
+---
+template: literate_and_technology::evaluation
+.right-column[
+### Cloud Provider OpenAPI v2 support and extensions
+
+##### .green[[These extensions](https://cloud.google.com/endpoints/docs/openapi/openapi-extensions) are supported] by the [GCP Extensible Service Proxy](https://cloud.google.com/endpoints/docs/openapi/architecture-overview#extensible_service_proxy)
+
+.wide.internalborders[
+Attribute | Description
+:-- | :--:
+x-google-allow  | Can protect configurable endpoints with API Keys
+x-google-endpoints | Allows configuring DNS-A records for project instances
+x-google-issuer | Allow verification of securityScheme issues via URI / E-Mail
+x-google-jwks_uri | Provide URI for the JSON Web Token
+x-google-audiences | Controls allowed clients provided as DNS records
+x-google-management: metrics, quota | Configures metric semantics and quota limits
+]
+
+##### .green[AWS also supports [API Gateway Extensions to Swagger](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html)]
+]
+---
+template: literate_and_technology::evaluation
+.right-column[
+#### Available Tools
+Converters, Doc Viewers/Consoles, Editors, Generators, Server Implementations, Parsers/Models/Validators, etc.
+
+#### Prototyping with OpenAPI v3.0.1
+
+Resources for finding v3 compatible tooling:
+
+  * https://github.com/Mermade/awesome-openapi3
+  * http://openapi.tools/
+
+
+##### .red[Unsuccessful]
+* I could not find a working tool for getting up and running with a simple server and client
+* Downconverting to v2 is lossy as well
+
+#### Prototyping with OpenAPI v2
+.big.green[Successful]
+* [**go-swagger**](https://github.com/go-swagger/go-swagger) seems to be an established code generation toolkit and will be used for the example implementation
+]
+---
+name: example-impl::architecture
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+### I. Literature & Technology
+## II. Example Implementation
+#### 1. Design & Architecture
+##### 2. Notes
+##### 3. Demo
+##### 4. Evaluation
+### III. Conclusion
+]
+---
+template: example-impl::architecture
+.right-column[
+### Secure Echo Service
+* Require authentication on the `/echo` resource for the `POST` method;
+* Use *API_KEY* in a Pre-Shared-Key fashion configured via the environment
+* Specification in OpenAPI v2.0 format
+* *go-swagger* toolchain for generating Server & Client code
+
+### Test Setup
+* Package and run server app with Docker
+* Test the endpoint using `curl` and the generated client
+
+### Key Authentication via Header
+Example Header
+
+```
+POST /echo HTTP/1.1
+(...)
+*X-API-Key: pre-shared-secret
+(...)
+```
+]
+---
+name: example-impl::notes
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+### I. Literature & Technology
+## II. Example Implementation
+##### 1. Design & Architecture
+#### 2. Notes
+##### 3. Demo
+##### 4. Evaluation
+### III. Conclusion
+]
+---
+template: example-impl::architecture
+.right-column[
+### Secure Echo Server - Specification
+```yml
+swagger: '2.0'
+(...)
+  /echo:
+    post:
+      summary: POST a body and receive it back
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      operationId: postEcho
+      responses:
+        '201':
+          description: POST echo'd
+          schema:
+            $ref: '#/definitions/Message'
+        '401':
+          description: not authorized
+          schema:
+            $ref: '#/definitions/Message'
+          examples:
+            application/json: not authorized
+(...)
+      security:
+        - apiKey: []
+(...)
+```
+]
+---
+template: example-impl::architecture
+.right-column[
+### Secure Echo Server - Specification
+```yml
+securityDefinitions:
+  apiKey:
+    type: apiKey
+    in: header
+    name: X-API-Key
+definitions:
+  Message:
+    properties:
+      msg:
+        type: string
+  Error:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+x-components: {}
+```
+]
+---
+template: example-impl::notes
+.right-column[
+### Server Implementation
+
+#### Code Generation
+```bash
+$ go-swagger generate server -f ../defs/2.0_secure-echo.yaml \
+  -A secure-echo-server -t src/secure-echo-server -P string
+```
+#### Authentication Implementation
+```go
+< return nil, errors.NotImplemented("api key auth (apiKey) X-API-Key from header param [X-API-Key] has not yet been implemented")
+---
+> if token == os.Getenv("API_KEY") {
+>   return &token, nil
+> }
+>
+> return nil, errors.New(401, "wrong auth key")
+```
+
+#### POST /echo Implementation
+```go
+< return middleware.NotImplemented("operation .PostEcho has not yet been implemented")
+---
+> return operations.NewPostEchoCreated().WithPayload(params.Body)
+```
+]
+
+???
+
+* The key is just a string
+---
+template: example-impl::notes
+.right-column[
+### Client Implementation
+#### Code Generation
+```bash
+$ go-swagger generate client -f ../defs/2.0_secure-echo.yaml \
+    -A secure-echo-client -t src/secure-echo-client -P string
+```
+
+#### Main
+```go
+func main() {
+	params := operations.
+		NewPostEchoParamsWithTimeout(1 * time.Second).
+		WithBody(&models.Message{Msg: os.Getenv("API_MSG")})
+
+	client := apiclient.
+		New(httptransport.New(os.Getenv("API_HOST"), "", nil), strfmt.Default)
+	apiKeyHeaderAuth := httptransport.
+		APIKeyAuth("X-API-Key", "header", os.Getenv("API_KEY"))
+	resp, err := client.Operations.PostEcho(params, apiKeyHeaderAuth)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("%#v\n", resp.Payload.Msg)
+}
+```
+]
+---
+name: example-impl::demo
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+### I. Literature & Technology
+## II. Example Implementation
+##### 1. Design & Architecture
+##### 2. Notes
+#### 3. Demo
+##### 4. Evaluation
+### III. Conclusion
+]
+---
+template: example-impl::demo
+.right-column[
+##### Running the Server with Docker
+```bash
+$ docker run --rm --publish 127.0.0.1:8888:8080 --env API_KEY=techtalkdemosecret zhaw-tech-talk-demo:latest
+2018/02/27 10:13:46 Serving secure echo server at http://[::]:8080
+```
+
+##### Verifying an invalid key with curl
+```bash
+$ curl -X POST --header 'Content-Type: application/json' -H 'X-API-Key: techtalkdemosecretWRONG' -d '{ "msg": "echo me" }' 'http://127.0.0.1:8888/echo'
+{"code":401,"message":"wrong auth key"}%
+```
+
+##### Verifying a correct key with curl
+```bash
+$ curl -X POST --header 'Content-Type: application/json' -H 'X-API-Key: techtalkdemosecret' -d '{ "msg": "echo me" }' 'http://127.0.0.1:8888/echo'
+{"msg":"echo me"}
+```
+
+##### Verifying a correct key with the Client
+```bash
+$ export API_HOST="127.0.0.1:8888"; export API_KEY="techtalkdemosecret"
+$ export API_MSG=Boomerang;
+$ go run gopath/src/secure-echo-client/cmd/secure-echo-client-client/main.go
+2018/02/27 11:18:09 "Boomerang"
+```
+]
+---
+name: example-impl::evaluation
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+### I. Literature & Technology
+## II. Example Implementation
+##### 1. Design & Architecture
+##### 2. Notes
+##### 3. Demo
+#### 4. Evaluation
+### III. Conclusion
+]
+---
+template: example-impl::evaluation
+.right-column[
+### Google Platform Cloud Did Not Like The App
+```
+env: flex
+runtime: custom
+
+manual_scaling:
+  instances: 1
+
+network:
+  forwarded_ports:
+    - 8080/tcp
+
+env_variables:
+  API_KEY: 'techtalkdemosecret'
+```
+
+##### Failed *Updating service* after successfully pushing the image
+```bash
+$ gcloud app deploy --stop-previous-version --promote
+(...)
+latest: digest: sha256:fa56f4a2f69d10f0a7f153d1d362e0f0f4031936e0253b02cdf2cdc40a427623 size: 2205
+DONE
+----------------------------------------------------------------------------------------------
+Updating service [default]...failed.
+```
+]
+---
+name: example-impl::conclusion::summary
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+### I. Literature & Technology
+### II. Example Implementation
+## III. Conclusion
+#### 1. Summary
+##### 2. Outlook
+]
+---
+template: example-impl::conclusion::summary
+.right-column[
+#### State of OpenAPI
+##### Golang Code Generation for Secured Server/Client
+* .red[v3 has no production-level support by any known tool today]
+* .yellow[v2 client code generation still requires manual configuration for authentication]
+* .green[v2 server code generation still requires manual configuration for authentication]
+]
+
+--
+.right-column[
+##### API Features
+* .green[Covers RESTful APIs]
+* .red[No modeling support for combining REST/RPC model]
+* .green[Wide feature support and easy to extend with custom attributes]
+* .green[Efficient API design through reusable component definitions]
+]
+---
+template: example-impl::conclusion::summary
+.right-column[
+#### State of OpenAPI
+##### Politics and Community
+* .green[Independently governed and protected by the Linux Foundation]
+* .green[Numerous industry companies are]
+
+#### .yellow[Results Depend on Tooling and Specific Target Language Support]
+* The most complex part is translating the specification document to source code.
+
+Involved problems and their states
+* .green[Parsing the Specification Attributes]
+* .yellow[Mapping spec attributes to templating variables]
+* .red[Developing smart templates for accurately mapping specification features]
+]
+---
+name: example-impl::conclusion::outlook
+layout: true
+<div class="my-footer">Stefan Junker</div>
+.left-column[
+### I. Literature & Technology
+### II. Example Implementation
+## III. Conclusion
+##### 1. Summary
+#### 2. Outlook
+]
+---
+template: example-impl::conclusion::outlook
+.right-column[
+#### OpenAPI Specific Short-Term Goals
+* Introduce template support for common languages in v3 Tooling
+* Achieve SDK generation/updates without manual intervention by improving support on existing features. Examples:
+    * Authentication schemes
+    * Error handling
+    * Client-Side Load Balancing based on Servers in Specification Document
+    * Callback handling
+
+#### OpenAPI Specific - Medium-Term Goals
+* Provider independent API gateway support for Combined Specification
+
+#### Generic Web-Services - Long-Term Goals
+* Form a connection between RPC protocol IDLs and REST IDLs
+]
+---
+name: questions
+layout: false
+class: middle, center
+
+# Thank you!
+---
+template: literate_and_technology::idl
+exclude: false
+count: false
+
+.right-column[
+##### Structures are based on directed, labelled graphs
+
+*simple* IDL structure
+```idl
+Structure simple Root exp Is
+  tree ::= leaf | inner;
+  inner => op: operator, sons: Seq Of tree;
+  leaf => name: String;
+  operator ::= plus | minus | times | divide;
+  plus =>, minus =>; times =>, divide =>;
+End
+```
+
+Adding a representation to the *simple* structure
+```idl
+Structure rep1 Refines simple Is
+  For leaf.name Use fixedString 20;
+  For operator Use enumeration;
+End
+Structure rep2 Refines simple Is
+  For leaf.name Use index;
+End
+```
+]
+---
+template: literate_and_technology::evolution
+count: false
+.right-column[
+### CORBA-IDL Example
+
+```idl
+module BankExample {
+  typedef float MoneyType;
+  struct NameType {
+    string first;
+    string last;
+  };
+  interface BankAccount {
+    MoneyType balance();
+    MoneyType deposit(in MoneyType amount);
+    MoneyType withdraw(in MoneyType amount);
+  };
+  interface CheckingAccount : BankAccount {
+    exception BadCheck {
+      MoneyType fee;
+    };
+    MoneyType writeCheck( in MoneyType amount)
+      raises (BadCheck);
+  };
+  interface BankManager {
+    CheckingAccount openAccount(in NameType name,
+      in MoneyType deposit, out MoneyType balance);
+  };
+};
+```
+]
+  </textarea>
+  <script src="./js/remark-latest.min.js"></script>
+  <script src="./js/mermaid.min.js"></script>
+  <script>
+    var slideshow = remark.create({
+      /* sourceUrl: 'slides.md', */
+      ratio: '16:10',
+      slideNumberFormat: '%current%/%total%',
+      highlightLanguage: "go",
+      highlightStyle: "monokai",
+      highlightLines: true,
+      highlightSpans: true,
+    });
+  </script>
+</body>
+
+</html>

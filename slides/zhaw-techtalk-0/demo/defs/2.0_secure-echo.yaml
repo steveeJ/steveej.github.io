@@ -1,0 +1,58 @@
+info:
+  version: 0.0.1
+  title: secure-echo
+paths:
+  /echo:
+    post:
+      summary: POST a body and receive it back
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      operationId: postEcho
+      responses:
+        '201':
+          description: POST echo'd
+          schema:
+            $ref: '#/definitions/Message'
+        '401':
+          description: not authorized
+          schema:
+            $ref: '#/definitions/Message'
+          examples:
+            application/json: not authorized
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      security:
+        - apiKey: []
+      parameters:
+        - required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/Message'
+swagger: '2.0'
+securityDefinitions:
+  apiKey:
+    type: apiKey
+    in: header
+    name: X-API-Key
+definitions:
+  Message:
+    properties:
+      msg:
+        type: string
+  Error:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+x-components: {}
