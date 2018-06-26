@@ -7,7 +7,7 @@ info:
     email: mail@stefanjunker.de
 
 tags:
-  - name: unsecured
+  - name: secured
     description: All unsecured resources
 
 paths:
