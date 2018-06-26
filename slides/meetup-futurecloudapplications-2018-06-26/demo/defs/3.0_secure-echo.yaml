@@ -2,12 +2,21 @@ openapi: 3.0.1
 info:
   version: 0.0.1
   title: secure-echo
+  contact:
+    name: Stefan Junker
+    email: mail@stefanjunker.de
+
+tags:
+  - name: unsecured
+    description: All unsecured resources
 
 paths:
   /echo:
     post:
       summary: POST a body and receive it back
       operationId: postEcho
+      tags:
+        - secured
       requestBody:
         required: true
         content:
@@ -36,12 +45,18 @@ paths:
                 $ref: "#/components/schemas/Error"
       security:
         - apiKey: []
+        - googleOpenId:
+          - email
+
 components:
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: X-API-Key
+    googleOpenId:   # <--- Arbitrary name for the security scheme. Used to refer to it from elsewhere.
+      type: openIdConnect
+      openIdConnectUrl: https://accounts.google.com/.well-known/openid-configuration
   schemas:
     Message:
       properties:
