@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Stefan Junker - Future Cloud Applications 2018-06-26</title>
+  <link rel="stylesheet" href="./js/pure-min-1.0.0.css">
+  <link rel="stylesheet" href="./js/fonts.css">
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: 'Droid Serif';
+    }
+
+    body a {
+      text-decoration: underline;
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      margin-bottom: 0;
+    }
+
+    .wide table {
+      margin-top: 15px;
+      min-width: 99%;
+    }
+
+    table td,
+    th {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 5px;
+    }
+
+    table td:not(:last-of-type) {
+      padding-right: 1ex;
+    }
+
+    .internalborders td:not(:last-of-type),
+    .internalborders th:not(:last-of-type) {
+      border-right: 1px solid;
+      padding-right: 1ex;
+    }
+
+    .nohead thead {
+      display: none
+    }
+
+    h1:first-of-type {
+      margin-top: 1em;
+    }
+
+    h1 {
+      margin-top: 2em;
+    }
+
+    .remark-slide-content h1 {
+      font-size: 2.1em;
+    }
+
+    .remark-slide-content h2 {
+      font-size: 1.7em;
+    }
+
+    .remark-slide-content h3 {
+      font-size: 1.4em;
+    }
+
+    .remark-slide-content h4 {
+      font-size: 1.1em;
+    }
+
+    .remark-slide-content h5 {
+      font-size: 1.0em;
+    }
+
+    .footnote {
+      position: absolute;
+      bottom: 3em;
+    }
+
+    li {
+      line-height: 1.50em;
+      margin-left: 1em;
+    }
+
+    .red {
+      color: #fa0000;
+    }
+
+    .redbg {
+      background-color: rgba(255, 0, 0, 0.2);
+    }
+
+    .cyan {
+      color: cyan;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .violet {
+      color: violet;
+    }
+
+    .green {
+      color: green;
+    }
+
+    .yellow {
+      color: orange;
+    }
+
+    .orange {
+      color: brown;
+    }
+
+    .gray {
+      color: gray;
+    }
+
+    .yellowbg {
+      background-color: rgba(255, 255, 0, 0.2);
+    }
+
+    .notsmall {
+      font-size: 0.9em;
+    }
+
+    .small {
+      font-size: 0.8em;
+    }
+
+    .smaller-font {
+      font-size: 14px
+    }
+
+
+    .big {
+      font-size: 1.1em;
+    }
+
+    .bigger {
+      font-size: 1.2em;
+    }
+
+    .large {
+      font-size: 1.5em;
+    }
+
+    a,
+    a>code {
+      color: rgb(249, 38, 114);
+      text-decoration: none;
+    }
+
+    .indent {
+      margin-left: 1em;
+    }
+
+    blockquote {
+      font-family: "Calibri";
+      font-style: italic;
+      font-size: 1.2em;
+      display: block;
+      position: relative;
+      width: 100%;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-left: 5px solid rgba(0, 100, 255, 0.5);
+      border-right: 5px solid rgba(0, 100, 255, 0.5);
+      /*
+        box-shadow: 2px 2px 10px 0px rgba(100, 100, 100, 0.1);
+            */
+    }
+
+
+
+    code {
+      background: #e7e8e2;
+      border-radius: 5px;
+    }
+
+    .remark-code,
+    .remark-inline-code {
+      font-family: 'Ubuntu Mono';
+    }
+
+    .remark-code-line-highlighted {
+      background-color: darkgoldenrod;
+    }
+
+    .pull-left {
+      float: left;
+      width: 47%;
+    }
+
+    .pull-right {
+      float: right;
+      width: 47%;
+    }
+
+    .pull-right~p {
+      clear: both;
+    }
+
+    #slideshow .slide .content code {
+      font-size: 0.8em;
+    }
+
+    #slideshow .slide .content pre code {
+      font-size: 0.9em;
+      padding: 15px;
+    }
+
+    .inverse {
+      background: #272822;
+      color: #777872;
+      text-shadow: 0 0 5px #333;
+    }
+
+    .inverse h1,
+    .inverse h2 {
+      color: #f3f3f3;
+      line-height: 0.8em;
+    }
+
+    /* Slide-specific styling */
+
+    #slide-inverse .footnote {
+      bottom: 12px;
+      left: 20px;
+    }
+
+    #slide-how .slides {
+      font-size: 0.9em;
+      position: absolute;
+      top: 151px;
+      right: 140px;
+    }
+
+    #slide-how .slides h3 {
+      margin-top: 0.2em;
+    }
+
+    #slide-how .slides .first,
+    #slide-how .slides .second {
+      padding: 1px 20px;
+      height: 90px;
+      width: 120px;
+      -moz-box-shadow: 0 0 10px #777;
+      -webkit-box-shadow: 0 0 10px #777;
+      box-shadow: 0 0 10px #777;
+    }
+
+    #slide-how .slides .first {
+      background: #fff;
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      z-index: 1;
+    }
+
+    #slide-how .slides .second {
+      position: relative;
+      background: #fff;
+      z-index: 0;
+    }
+
+    /* Two-column layout */
+
+    .left-column {
+      color: #777;
+      width: 24%;
+      height: 92%;
+      float: left;
+    }
+
+    .black {
+      color: #000;
+    }
+
+    .gray {
+      color: #777;
+    }
+
+    .left-column h2,
+    .left-column h4 {
+      color: #000;
+    }
+
+    .left-column h3,
+    .left-column h5 {
+      color: gray
+    }
+
+    .left-column h2 {
+      font-size: 1.3em;
+    }
+
+    .left-column h3 {
+      font-size: 1.2em;
+    }
+
+    .left-column h4 {
+      font-size: 1.2em;
+    }
+
+    .left-column h4 {
+      font-size: 1.1em;
+    }
+
+    .right-column {
+      width: 72%;
+      float: right;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: -1%;
+      /* color: gray; */
+    }
+
+    .middle-column {
+      width: 90%;
+      float: right;
+      padding-top: 0em;
+      padding-bottom: 0em;
+      margin-top: 0em;
+      margin-bottom: 0em;
+    }
+
+    .inner-center {}
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    /* Header/Footer stuff */
+
+    div.my-footer {
+      position: absolute;
+      text-align: left;
+      bottom: 12px;
+      left: 20px;
+      width: 100%;
+      opacity: 0.5;
+    }
+
+    .footnote {
+      position: absolute;
+      bottom: 3em;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="./js/remark-latest.min.js"></script>
+  <script src="./js/mermaid.min.js"></script>
+  <script>
+    var slideshow = remark.create({
+      sourceUrl: 'slides.md',
+      ratio: '16:10',
+      slideNumberFormat: '%current%/%total%',
+      highlightLanguage: "go",
+      highlightStyle: "monokai",
+      highlightLines: true,
+      highlightSpans: true,
+    });
+  </script>
+</body>
+
+</html>
