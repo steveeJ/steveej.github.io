@@ -1,0 +1,11 @@
+title = "Stefan's Pages"
+default_view = "Home"
+
+[views]
+Home = "home.toml"
+About = "about.toml"
+
+[blog]
+files = [
+    "blog/Hello_World.toml"
+]

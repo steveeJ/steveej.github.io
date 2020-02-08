@@ -1,0 +1,7 @@
+title = "Hello, World!"
+schema = 0
+date = "2020-02-08T17:04:23+01:00"
+display = true
+tags = [ "home", "technology", "rust", "yew" ]
+media_type = "text/markdown"
+filename = "home.md"

@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+.menu {
+  width: 100%;
+  height:  60px;
+  border: 1px solid red;
+}
+
+.menuitem, button {
+  float: right;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+.main {
+  width: 100%;
+  padding-top: 1%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 1%;
+  border: 1px solid red;
+}
